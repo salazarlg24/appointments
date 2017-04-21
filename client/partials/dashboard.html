@@ -1,0 +1,30 @@
+
+<div ng-controller="UsersController">
+	<h1 style="display: inline-block;">Doctor's Appointments</h1> 
+	<h3 style="display: inline-block;margin-left: 500px">Welcome</h3>
+	<input style="display: inline-block;" type="submit" value="Sign Out" ng-click="logout()">
+	<hr>
+</div>
+
+<div ng-controller="DashboardController">
+	<input type="text" placeholder="filter...." ng-model="filter_name">
+	<table style="border: 2px solid black; width: 500px; text-align: left;">
+		<tr>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Patient Name</th>
+			<th>Complain</th>
+		</tr>
+		<tr ng-repeat="item in appoints | orderBy:'-date':true | filter: filter_name" ">
+			<td>{{item.date | date}}</td>
+			<td>{{item.time |date: "h:mma"}}</td>
+			<td>{{item._user.name}}</td>
+			<td>{{item.text}}</td>
+			<td><button ng-if="item._user._id == user" ng-click="delete(item._id)">Cancel</button></td>
+		</tr>
+	</table>
+	<br>
+	<form action="#!/appointment">
+		<input type="submit" value="Add New Appointment">
+	</form>
+</div>

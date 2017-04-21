@@ -1,0 +1,21 @@
+<h1>New Appointment</h1>
+
+
+
+
+<div ng-controller="AppointmentController">
+
+<div ng-repeat="item in messages">
+	<h2 style="color: red">{{item}}</h2>
+</div>
+	<div>
+		<form>
+			<p>Date: <input type="date" ng-model="newAppoint.date">
+			Time: <input type="time" min="08:00:00" max="17:00:00" ng-model="newAppoint.time" required>
+			</p>
+			<p>Complain: <textarea ng-model="newAppoint.text"></textarea></p>
+			<p> <a href="#!/dashboard">Cancel</a> <button ng-click="create()">Add Appointment</button></p>
+		</form>
+	</div>
+
+</div>
